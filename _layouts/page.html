@@ -4,7 +4,8 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>モヤレコ</title>
-  <link rel="stylesheet" href="{{ '/style.css' | relative_url }}">
+  <!-- ここを修正：styles.css を相対パスで -->
+  <link rel="stylesheet" href="styles.css">
   <meta name="color-scheme" content="light">
 </head>
 <body>
@@ -13,13 +14,15 @@
       <a class="brand" href="{{ '/' | relative_url }}">モヤレコ</a>
       <nav>
         <a href="{{ '/' | relative_url }}">ホーム</a>
-        <a href="{{ '/privacy/' | relative_url }}">プライバシーポリシー</a>
+        <!-- まだ /privacy/ ページが無いなら、このリンクは一旦外してOK -->
+        <!-- <a href="{{ '/privacy/' | relative_url }}">プライバシーポリシー</a> -->
       </nav>
     </div>
   </header>
 
   <main class="container content">
-    {{ content }}
+    <!-- ここを修正：MarkdownをHTMLに変換してから差し込む -->
+    {{ content | markdownify }}
   </main>
 
   <footer class="site-footer">
